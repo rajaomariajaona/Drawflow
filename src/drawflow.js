@@ -30,7 +30,7 @@ export default class Drawflow {
     this.first_click = null;
     this.force_first_input = false;
     this.draggable_inputs = true;
-    this.useuuid = false;
+    this.useuuid = true;
     this.parent = parent;
 
     this.noderegister = {};
@@ -1180,9 +1180,9 @@ export default class Drawflow {
     return nodes;
   }
 
-  addNode (name, num_in, num_out, ele_pos_x, ele_pos_y, classoverride, data, html, typenode = false) {
+  addNode (customId = null, name, num_in, num_out, ele_pos_x, ele_pos_y, classoverride, data, html, typenode = false) {
     if (this.useuuid) {
-      var newNodeId = this.getUuid();
+      var newNodeId = customId ? customId : this.getUuid();
     } else {
       var newNodeId = this.nodeId;
     }
